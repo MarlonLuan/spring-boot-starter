@@ -1,0 +1,23 @@
+server:
+  error:
+    include-stacktrace: never
+  port: ${PORT:8080}
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/mldemo
+    username: mldemo
+    password: mldemo
+  docker:
+    compose:
+      enabled: true
+      file: docker/docker-compose-database.yaml
+  jpa:
+    generate-ddl: true
+    hibernate:
+      ddl-auto: create-drop
+    properties:
+      hibernate.format_sql: true
+    show-sql: true
+  mvc:
+    problemdetails:
+      enabled: true
