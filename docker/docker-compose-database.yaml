@@ -1,0 +1,17 @@
+version: "3.9"
+
+services:
+  database:
+    image: postgres:16.2-alpine3.19@sha256:1d74239810c19ed0dbb317acae40974e673865b2d565a0d369e206159d483957
+    environment:
+      - POSTGRES_USER=mldemo
+      - POSTGRES_PASSWORD=mldemo
+    # volumes:
+    #   - /var/mldemo/volumes/lib/postgresql/data/:/var/lib/postgresql/data/
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U $${POSTGRES_USER}']
+      interval: 5s
+      timeout: 5s
+      retries: 10

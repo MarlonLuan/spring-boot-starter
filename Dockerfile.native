@@ -1,0 +1,8 @@
+FROM ghcr.io/graalvm/graalvm-ce:ol9-java17@sha256:9d82e6148f356f2f07e92321d292831e58b6cdb17de7ed2103a2276e65f01d61
+RUN chmod +x mvnw && \
+    ./mvnw clean -Pnative native:compile -DskipTests -Dmaven.test.skip=true -Dmaven.javadoc.skip=true -Dmaven.source.skip
+
+FROM ubuntu@sha256:77906da86b60585ce12215807090eb327e7386c8fafb5402369e421f44eff17e
+COPY --from=0 target/${NAME_APP} ${CAMINHO_APP}
+
+CMD ["/work/app"]
