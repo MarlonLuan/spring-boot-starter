@@ -1,0 +1,32 @@
+# FROM eclipse-temurin:21-jdk-alpine AS builder
+# FROM ghcr.io/graalvm/jdk-community:21 AS builder
+# FROM ghcr.io/graalvm/graalvm-community:21 AS builder
+# FROM ghcr.io/graalvm/native-image-community:21 AS builder
+FROM ghcr.io/graalvm/native-image-community:23-muslib@sha256:931b61b9537d02ff814fec7d45e8a8f0c22310aa009f63323db514b4c961a8a9 AS builder
+
+WORKDIR /opt/demo
+
+COPY .mvn .mvn
+COPY docker docker
+COPY scripts scripts
+COPY src src
+COPY mvnw .
+COPY pom.xml .
+
+RUN microdnf update -y && \
+    microdnf install -y maven gcc glibc-devel zlib-devel libstdc++-devel gcc-c++ && \
+    microdnf clean all
+
+RUN ./mvnw dependency:go-offline
+
+# RUN ./mvnw clean install
+RUN ./mvnw -Pnative spring-boot:build-image -DskipTests -Dmaven.test.skip=true -Dmaven.javadoc.skip=true -Dmaven.source.skip
+
+# FROM eclipse-temurin:21-jre-alpine
+FROM debian:stable-slim@sha256:b5ace515e78743215a1b101a6f17e59ed74b17132139ca3af3c37e605205e973
+
+WORKDIR /opt/demo
+
+COPY --from=builder /opt/demo/target/* /opt/demo/app
+
+ENTRYPOINT ["/opt/demo/app"]
