@@ -1,0 +1,20 @@
+version: "3.9"
+
+# include:
+#   - ./docker-compose-database.yaml
+
+services:
+  api01sembanco: &api
+    image: api01sembanco
+    build:
+      dockerfile: Dockerfile
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://localhost:5432/mldemo
+      - SPRING_DATASOURCE_USERNAME=mldemo
+      - SPRING_DATASOURCE_PASSWORD=mldemo
+      - PORT=8080
+    ports:
+      - "8080:8080"
+    # depends_on:
+    #   database:
+    #     condition: service_healthy
