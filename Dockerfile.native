@@ -1,0 +1,32 @@
+# FROM eclipse-temurin:21.0.3_9-jdk-alpine@sha256:ebfc28d35b192c55509e3c7cc597d91136528f1a9d3261965b44663af9eb4b4b AS builder
+# FROM ghcr.io/graalvm/jdk-community:21@sha256:57e5c4cf8536dac4346611691c31ea4828f3ff7bbb0d3695902b234f69ed99b5 AS builder
+# FROM ghcr.io/graalvm/graalvm-community:21@sha256:6e46c711c90bdbc24e23ccdb6e3fba837d660e68dd4ffeb87abbd3d08e115653 AS builder
+# FROM ghcr.io/graalvm/native-image-community:21@sha256:faed0fd6809b138254bdd6c7046e56894f4d9566ecbc7b0952aab43e65e16e0e AS builder
+FROM ghcr.io/graalvm/native-image-community:22-muslib@sha256:706bc8079b6169c3acbe19e1cb7aaed394e2d39641979292fc42577c8f66cd09 AS builder
+
+WORKDIR /opt/demo
+
+COPY .mvn .mvn
+COPY docker docker
+COPY script script
+COPY src src
+COPY mvnw .
+COPY pom.xml .
+
+RUN microdnf update -y && \
+    microdnf install -y maven gcc glibc-devel zlib-devel libstdc++-devel gcc-c++ && \
+    microdnf clean all
+
+RUN ./mvnw dependency:go-offline
+
+# RUN ./mvnw clean install
+RUN ./mvnw -Pnative spring-boot:build-image -DskipTests -Dmaven.test.skip=true -Dmaven.javadoc.skip=true -Dmaven.source.skip
+
+# FROM eclipse-temurin:21.0.3_9-jre-alpine@sha256:23467b3e42617ca197f43f58bc5fb03ca4cb059d68acd49c67128bfded132d67
+FROM debian:stable-slim@sha256:382967fd7c35a0899ca3146b0b73d0791478fba2f71020c7aa8c27e3a4f26672
+
+WORKDIR /opt/demo
+
+COPY --from=builder /opt/demo/target/* /opt/demo/app
+
+ENTRYPOINT ["/opt/demo/app"]
