@@ -1,0 +1,25 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["config:best-practices", "workarounds:javaLTSVersions"],
+  "recreateWhen": "always",
+  "separateMinorPatch": true,
+  "separateMultipleMajor": true,
+  "commitMessageSuffix": "[skip ci]",
+  "draftPR": true,
+  "packageRules": [
+    {
+      "matchFileNames": [".github/**"],
+      "groupName": "github-path",
+      "draftPR": false
+    },
+    {
+      "automerge": true,
+      "matchUpdateTypes": ["patch"],
+      "groupName": "all-patch"
+    },
+    {
+      "matchUpdateTypes": ["minor"],
+      "groupName": "all-minor"
+    }
+  ]
+}
