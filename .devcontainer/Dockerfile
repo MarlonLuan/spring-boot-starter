@@ -1,0 +1,20 @@
+FROM eclipse-temurin:25.0.1_8-jdk@sha256:adc4533ea69967c783ac2327dac7ff548fcf6401a7e595e723b414c0a7920eb2
+
+RUN apt update
+RUN apt upgrade -y
+
+RUN apt install bash git -y
+
+RUN rm -rf /var/lib/apt/lists/*
+
+RUN addgroup --gid 10001 appgroup && \
+    adduser --uid 10000 --ingroup appgroup --disabled-password --gecos "" appuser
+
+RUN mkdir -p /workspaces && \
+    chown -R appuser:appgroup /workspaces
+
+USER appuser
+
+WORKDIR /workspaces
+
+CMD ["sleep", "infinity"]
