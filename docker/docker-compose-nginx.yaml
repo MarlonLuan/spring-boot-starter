@@ -1,0 +1,16 @@
+include:
+  - ./docker-compose-api.yaml
+
+services:
+  nginx:
+    image: nginx:stable-alpine@sha256:5b44a5ab8ab467854f2bf7b835a32f850f32eb414b749fbf7ed506b139cd8d6b
+    volumes:
+      - ./config/nginx.conf:/etc/nginx/nginx.conf:ro
+    ports:
+      - "9999:9999"
+    restart: always
+    networks:
+      - backend
+    depends_on:
+      api01:
+        condition: service_healthy
