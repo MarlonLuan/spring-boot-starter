@@ -1,0 +1,21 @@
+include:
+  - ./docker-compose-networks.yaml
+
+services:
+  database:
+    image: postgres:18.0-alpine@sha256:0ce0d1fa5bf54b7b338e09829ab76b479dbd0702da50bf0cdf5c258208e47f40
+    environment:
+      - POSTGRES_USER=mldemo
+      - POSTGRES_PASSWORD=mldemo
+    # volumes:
+    #   - /var/mldemo/volumes/lib/postgresql/data/:/var/lib/postgresql/data/
+    ports:
+      - "5432:5432"
+    networks:
+      - backend
+    restart: always
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U $${POSTGRES_USER}']
+      interval: 5s
+      timeout: 5s
+      retries: 10
