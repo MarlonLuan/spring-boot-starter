@@ -1,0 +1,30 @@
+volumes:
+  data:
+
+services:
+  app:
+    container_name: app
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+        POSTGRES_PASSWORD: postgres
+        POSTGRES_USER: postgres
+        POSTGRES_DB: postgres
+        POSTGRES_HOSTNAME: postgresdb
+
+    volumes:
+      - ..:/workspaces
+
+    network_mode: service:db
+
+  db:
+    container_name: db
+    image: postgres:18@sha256:c1f0abd909b477d6088c72e4cd6eb01ea525344caca1b58689ae884204369502
+    restart: unless-stopped
+    volumes:
+      - data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_DB: postgres
