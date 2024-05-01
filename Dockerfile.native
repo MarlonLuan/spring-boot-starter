@@ -1,8 +1,8 @@
 FROM eclipse-temurin:21.0.3_9-jdk-alpine@sha256:ebfc28d35b192c55509e3c7cc597d91136528f1a9d3261965b44663af9eb4b4b AS builder
 FROM ghcr.io/graalvm/jdk-community:21@sha256:57e5c4cf8536dac4346611691c31ea4828f3ff7bbb0d3695902b234f69ed99b5 AS builder
-FROM ghcr.io/graalvm/graalvm-community:21 AS builder
-FROM ghcr.io/graalvm/native-image-community:21 AS builder
-FROM ghcr.io/graalvm/native-image-community:21-muslib AS builder
+FROM ghcr.io/graalvm/graalvm-community:21@sha256:6e46c711c90bdbc24e23ccdb6e3fba837d660e68dd4ffeb87abbd3d08e115653 AS builder
+FROM ghcr.io/graalvm/native-image-community:21@sha256:faed0fd6809b138254bdd6c7046e56894f4d9566ecbc7b0952aab43e65e16e0e AS builder
+FROM ghcr.io/graalvm/native-image-community:21-muslib@sha256:9c27f6de343cc74e0e20db1a682405424ef18c3431c08bdf7ccf6dc64ce5be60 AS builder
 
 WORKDIR /opt/demo
 
