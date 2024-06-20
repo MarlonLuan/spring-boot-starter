@@ -12,7 +12,7 @@ COPY pom.xml .
 # RUN ./mvnw clean install
 RUN ./mvnw clean install -DskipTests
 
-FROM eclipse-temurin:21.0.3_9-jre-alpine@sha256:23467b3e42617ca197f43f58bc5fb03ca4cb059d68acd49c67128bfded132d67
+FROM eclipse-temurin:21.0.3_9-jre-alpine@sha256:11cb6264789abec7478d085b7bd3f7263dbea23ca261c795c03ade9d4d449ff4
 
 WORKDIR /opt/demo
 
