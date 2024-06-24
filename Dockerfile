@@ -1,4 +1,4 @@
-FROM eclipse-temurin:21.0.3_9-jdk-alpine@sha256:cd77ea279fa771540f5ddac4fba3787cfdfd527adeb80b6b8a3aadbf78cfa4ea AS builder
+FROM eclipse-temurin:21.0.3_9-jdk-alpine@sha256:68a8a4ad547e750f497824540d90ff29d4b819a6a6287a5eb1b03a71e4c2167b AS builder
 
 WORKDIR /opt/demo
 
