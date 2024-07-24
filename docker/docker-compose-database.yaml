@@ -3,7 +3,7 @@ include:
 
 services:
   database:
-    image: postgres:16.3-alpine3.19@sha256:30d1b533e00ebcbed201fb9d79cee74c06172201a6c5f75d983608206d685e82
+    image: postgres:16.3-alpine3.19@sha256:1abbdd8c5bfb10ba18bb39a447e0a6980754f51e2dafb5541988743fb0a01144
     environment:
       - POSTGRES_USER=mldemo
       - POSTGRES_PASSWORD=mldemo
