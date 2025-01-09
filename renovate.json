@@ -1,6 +1,6 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["config:best-practices", "workarounds:javaLTSVersions"],
+  "extends": ["config:best-practices"],
   "recreateWhen": "always",
   "separateMinorPatch": true,
   "separateMultipleMajor": true,
@@ -14,6 +14,10 @@
     {
       "matchUpdateTypes": ["minor"],
       "groupName": "all-minor"
+    },
+    {
+      "matchUpdateTypes": ["digest", "pinDigest"],
+      "groupName": "all-digest"
     }
   ]
 }
