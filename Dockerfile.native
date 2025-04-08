@@ -23,7 +23,7 @@ RUN ./mvnw dependency:go-offline
 RUN ./mvnw -Pnative spring-boot:build-image -DskipTests -Dmaven.test.skip=true -Dmaven.javadoc.skip=true -Dmaven.source.skip
 
 # FROM eclipse-temurin:21-jre-alpine
-FROM debian:stable-slim@sha256:70b337e820bf51d399fa5bfa96a0066fbf22f3aa2c3307e2401b91e2207ac3c3
+FROM debian:stable-20250317-slim
 
 WORKDIR /opt/demo
 
