@@ -30,7 +30,7 @@ services:
 
   db:
     container_name: postgresdb
-    image: postgres:latest@sha256:4a04f628cf4cc68bb712bb6fcf0bf4feae731f120369592c1023ef812cf4b25a
+    image: postgres:latest@sha256:378ef4ac725e37399d67444809711e5340f90c2a54b22ab41a52c5ab1cd22d6b
     restart: unless-stopped
     volumes:
       - postgres-data:/var/lib/postgresql/data
