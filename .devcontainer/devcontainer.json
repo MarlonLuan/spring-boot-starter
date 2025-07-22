@@ -1,6 +1,6 @@
 {
-	"name": "Java & PostgreSQL",
-	"dockerComposeFile": "docker-compose.yml",
+	"name": "Java",
+	"dockerComposeFile": "docker-compose.yaml",
 	"service": "app",
 	"workspaceFolder": "/workspaces",
 	"forwardPorts": [5432, 8080]
