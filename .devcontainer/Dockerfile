@@ -1,17 +1,20 @@
-FROM mcr.microsoft.com/devcontainers/java:1-21-bullseye@sha256:6c5fbf1d0ac3cdac79dba5eaddf73edd27861ce88be797e7ff48f63b34b16d9a
+FROM eclipse-temurin:21.0.7_6-jdk
 
-ARG INSTALL_MAVEN="false"
-ARG MAVEN_VERSION=""
+RUN apt update
+RUN apt upgrade -y
 
-ARG INSTALL_GRADLE="false"
-ARG GRADLE_VERSION=""
+RUN apt install bash git -y
 
-RUN if [ "${INSTALL_MAVEN}" = "true" ]; then su vscode -c "umask 0002 && . /usr/local/sdkman/bin/sdkman-init.sh && sdk install maven \"${MAVEN_VERSION}\""; fi \
-    && if [ "${INSTALL_GRADLE}" = "true" ]; then su vscode -c "umask 0002 && . /usr/local/sdkman/bin/sdkman-init.sh && sdk install gradle \"${GRADLE_VERSION}\""; fi
+RUN rm -rf /var/lib/apt/lists/*
 
-# [Optional] Uncomment this section to install additional OS packages.
-# RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
-#     && apt-get -y install --no-install-recommends <your-package-list-here>
+RUN addgroup --gid 10001 appgroup && \
+    adduser --uid 10000 --ingroup appgroup --disabled-password --gecos "" appuser
 
-# [Optional] Uncomment this line to install global node packages.
-# RUN su vscode -c "source /usr/local/share/nvm/nvm.sh && npm install -g <your-package-here>" 2>&1
+RUN mkdir -p /workspaces && \
+    chown -R appuser:appgroup /workspaces
+
+USER appuser
+
+WORKDIR /workspaces
+
+CMD ["sleep", "infinity"]
