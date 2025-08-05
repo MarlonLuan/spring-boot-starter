@@ -1,4 +1,4 @@
-FROM eclipse-temurin:21.0.7_6-jdk-alpine-3.21@sha256:8e26f8064f2b89bc8543faf43ded3f223f47dd0a7afca042fdc892f1f6a4a8c3 AS builder
+FROM eclipse-temurin:21.0.8_9-jdk-alpine-3.21@sha256:02530d421294840308bd3dd026ec204e0ba62fc6f644e2694b77924bfa29c083 AS builder
 
 WORKDIR /opt/demo
 
@@ -12,7 +12,7 @@ COPY pom.xml .
 # RUN ./mvnw clean install
 RUN ./mvnw clean install -DskipTests
 
-FROM eclipse-temurin:21.0.7_6-jre-alpine-3.21@sha256:7b5c88eb4182a92aab3a4b10550061a6e18639bf176e7ebca21f866b19f853c1
+FROM eclipse-temurin:21.0.8_9-jre-alpine-3.21@sha256:0e0546003ca7a6c9374c556a620bd7d473491f68e583f5a805eda70153160049
 
 WORKDIR /opt/demo
 
