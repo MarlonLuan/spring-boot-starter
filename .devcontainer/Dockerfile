@@ -1,4 +1,4 @@
-FROM eclipse-temurin:21.0.8_9-jdk@sha256:9d2cd32945b17b8687f196c1a9ab664e00726782384f28e61fa99ca310b2697c
+FROM eclipse-temurin:21.0.8_9-jdk@sha256:1bd9ac00d3acc92a137cf9aca442a42e6f777736524b87cc376342ef5402e2d4
 
 RUN apt update
 RUN apt upgrade -y
