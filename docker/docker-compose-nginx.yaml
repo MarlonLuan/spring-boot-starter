@@ -3,7 +3,7 @@ include:
 
 services:
   nginx:
-    image: nginx:1.28.0-alpine3.21-slim@sha256:5fad7b10ebf7906e48073c2f5e53da593f018bc7f608e11c7d70bacc5b7824f2
+    image: nginx:1.28.0-alpine3.21-slim@sha256:f25f852134140e003ac967604cd1f9004a5e6abd195e8bf59bf0de303c9df35e
     volumes:
       - ./config/nginx.conf:/etc/nginx/nginx.conf:ro
     ports:
