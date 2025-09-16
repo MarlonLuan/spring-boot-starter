@@ -2,7 +2,7 @@
 # FROM ghcr.io/graalvm/jdk-community:21 AS builder
 # FROM ghcr.io/graalvm/graalvm-community:21 AS builder
 # FROM ghcr.io/graalvm/native-image-community:21 AS builder
-FROM ghcr.io/graalvm/native-image-community:24-muslib@sha256:7a1a207a380f86dafd36ff143ed540c4867424afb56fcd4355a6e04bfa195929 AS builder
+FROM ghcr.io/graalvm/native-image-community:25-muslib@sha256:f7dfd5580d891664316e7a7dd1bc8fb1ab27785a1ca610d1a8c80d8f0208c200 AS builder
 
 WORKDIR /opt/demo
 
