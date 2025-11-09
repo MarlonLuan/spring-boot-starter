@@ -1,4 +1,4 @@
-FROM eclipse-temurin:25.0.1_8-jdk@sha256:5945db3845ad393922ff573ab0c15dbf19ca76f0ae792c00110333060d0474a7
+FROM eclipse-temurin:25.0.1_8-jdk@sha256:b73804328f4d8e07476f24737fd38cb918842d772cffd71187a6fcfbe9629f65
 
 RUN apt update
 RUN apt upgrade -y
