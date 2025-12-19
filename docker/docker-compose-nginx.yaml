@@ -3,7 +3,7 @@ include:
 
 services:
   nginx:
-    image: nginx:1.29.4
+    image: nginx:1.29.4@sha256:fb01117203ff38c2f9af91db1a7409459182a37c87cced5cb442d1d8fcc66d19
     volumes:
       - ./config/nginx.conf:/etc/nginx/nginx.conf:ro
     ports:
