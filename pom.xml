@@ -13,7 +13,7 @@
     <name>mldemo</name>
     <description>Spring Boot Starter</description>
     <properties>
-        <impsort-maven-plugin.version>1.12.0</impsort-maven-plugin.version>
+        <impsort-maven-plugin.version>1.13.0</impsort-maven-plugin.version>
         <java.version>25</java.version>
         <ml-framework.version>4.0.0-SNAPSHOT</ml-framework.version>
         <lombok-mapstruct.version>0.2.0</lombok-mapstruct.version>
