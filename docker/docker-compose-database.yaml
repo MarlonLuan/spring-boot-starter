@@ -3,7 +3,7 @@ include:
 
 services:
   database:
-    image: postgres:18.1
+    image: postgres:18.1@sha256:2d417d4c88058c9707bd19d45f95c1db2b087507b89d44f669d43f596781614e
     environment:
       - POSTGRES_USER=mldemo
       - POSTGRES_PASSWORD=mldemo

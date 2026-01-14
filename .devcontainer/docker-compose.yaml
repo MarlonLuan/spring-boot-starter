@@ -20,7 +20,7 @@ services:
 
   db:
     container_name: db
-    image: postgres:18.1
+    image: postgres:18.1@sha256:2d417d4c88058c9707bd19d45f95c1db2b087507b89d44f669d43f596781614e
     restart: unless-stopped
     volumes:
       - data:/var/lib/postgresql/data

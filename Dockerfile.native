@@ -2,7 +2,7 @@
 # FROM ghcr.io/graalvm/jdk-community:25 AS builder
 # FROM ghcr.io/graalvm/graalvm-community:25 AS builder
 # FROM ghcr.io/graalvm/native-image-community:25 AS builder
-FROM ghcr.io/graalvm/native-image-community:25-muslib AS builder
+FROM ghcr.io/graalvm/native-image-community:25-muslib@sha256:22a37d00b911bb35d9580a2ebade1ad55734aec66c87f1a7c6a41fc18f02b78a AS builder
 
 WORKDIR /opt/demo
 
@@ -23,7 +23,7 @@ RUN ./mvnw dependency:go-offline
 RUN ./mvnw -Pnative spring-boot:build-image -DskipTests -Dmaven.test.skip=true -Dmaven.javadoc.skip=true -Dmaven.source.skip
 
 # FROM eclipse-temurin:25-jre
-FROM debian:stable-slim
+FROM debian:stable-slim@sha256:ed542b2d269ff08139fc5ab8c762efe8c8986b564a423d5241a5ce9fb09b6c08
 
 WORKDIR /opt/demo
 
