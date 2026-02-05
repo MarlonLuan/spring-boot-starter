@@ -3,7 +3,7 @@ include:
 
 services:
   nginx:
-    image: nginx:1.29.4
+    image: nginx:1.29.5
     volumes:
       - ./config/nginx.conf:/etc/nginx/nginx.conf:ro
     ports:
