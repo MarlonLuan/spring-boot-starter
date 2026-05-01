@@ -1,4 +1,4 @@
-FROM eclipse-temurin:25.0.2_10-jdk AS builder
+FROM eclipse-temurin:25.0.3_9-jdk AS builder
 
 WORKDIR /opt/demo
 
@@ -12,7 +12,7 @@ COPY pom.xml .
 # RUN ./mvnw clean install
 RUN ./mvnw clean install -DskipTests
 
-FROM eclipse-temurin:25.0.2_10-jre
+FROM eclipse-temurin:25.0.3_9-jre
 
 WORKDIR /opt/demo
 
