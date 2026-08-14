@@ -19,7 +19,7 @@
         <lombok-mapstruct.version>0.2.0</lombok-mapstruct.version>
         <mapstruct.version>1.6.3</mapstruct.version>
         <sortpom-maven-plugin.version>4.0.0</sortpom-maven-plugin.version>
-        <spring-javaformat-maven-plugin.version>0.0.47</spring-javaformat-maven-plugin.version>
+        <spring-javaformat-maven-plugin.version>0.0.48</spring-javaformat-maven-plugin.version>
     </properties>
     <dependencyManagement>
         <dependencies>
