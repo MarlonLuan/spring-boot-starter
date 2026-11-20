@@ -3,7 +3,7 @@ include:
 
 services:
   database:
-    image: postgres:18.7
+    image: postgres:19.0
     environment:
       - POSTGRES_USER=mldemo
       - POSTGRES_PASSWORD=mldemo
